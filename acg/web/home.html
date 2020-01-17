@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="sr()">点击</button>
+<button onclick="sr2()">点击弹出数据</button>
+<h1 id="hh">233</h1>
+<table id="tab">
+    <tr>
+        <td>
+
+        </td>
+    </tr>
+</table>
+</body>
+<script src="js/jquery-3.3.1.js"></script>
+<script>
+    function sr() {
+        var xmlRequest=new XMLHttpRequest();
+        xmlRequest.onreadystatechange=function () {
+            if (this.readyState===4&&this.status===200){
+                document.getElementById("hh").innerHTML=this.responseText
+            }
+        }
+        xmlRequest.open("get","/aa",true);
+        xmlRequest.send();
+    }
+    function sr2() {
+       // $("#hh").load('/aa')
+        $.get("/aa",function (d) {
+            alert("data："+d)
+        })
+    }
+</script>
+</html>
